@@ -1,0 +1,5 @@
+package com.wu.ecommerce.service;
+
+public interface UserService {
+
+}

@@ -1,0 +1,21 @@
+<%@page import="com.wu.ecommerce.dto.Order"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Dashboard</title>
+</head>
+<body>
+<h3>
+Welcome to Dashboard
+
+<%
+Order order= (Order)session.getAttribute("Order");
+out.print(order);
+%>
+
+</h3>
+</body>
+</html>

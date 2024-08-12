@@ -1,0 +1,62 @@
+package com.wu.ecommerce.repo;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Optional;
+
+import com.wu.ecommerce.dto.Order;
+import com.wu.ecommerce.dto.Users;
+import com.wu.ecommerce.exception.InvalidOrderIdException;
+
+public class UserRepositoryImpl implements UserRepository{
+
+	
+	
+	
+	private static  UserRepository userRepository;
+	private ArrayList<Users> users=new ArrayList<Users>();
+	public static UserRepository getInstance() {
+		if(userRepository==null) {
+			userRepository=new UserRepositoryImpl();
+		}
+		return userRepository;
+	}
+
+	
+	@Override
+	public Users addUser(Users user) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Users getUserByUserId(String Id) throws InvalidOrderIdException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Optional<ArrayList<Users>> getUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Optional<ArrayList<Users>> getUsersByUserId(String userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String removeUserByUserId(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Users updateUserByUserId(String id, Users user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

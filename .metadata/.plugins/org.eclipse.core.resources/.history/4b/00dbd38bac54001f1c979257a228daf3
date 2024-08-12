@@ -1,0 +1,5 @@
+package com.wu.ecommerce.utils;
+
+public class DBUtils {
+
+}

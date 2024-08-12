@@ -1,0 +1,81 @@
+package com.wu.ecommerce.repo;
+
+import java.util.ArrayList;
+import java.util.Optional;
+
+import com.wu.ecommerce.dto.Order;
+import com.wu.ecommerce.dto.Product;
+import com.wu.ecommerce.exception.InvalidIDException;
+import com.wu.ecommerce.exception.InvalidOrderIdException;
+
+public class OrderRepositoryImpl implements OrderRepository {
+
+	private static  OrderRepository orderRepository;
+	private ArrayList<Order> orders=new ArrayList<Order>();
+	public static OrderRepository getInstance() {
+		if(orderRepository==null) {
+			orderRepository=new OrderRepositoryImpl();
+		}
+		return orderRepository;
+	}
+
+	@Override
+	public Order addOrder(Order order) {
+		// TODO Auto-generated method stub
+		orders.add(order);
+		return order;
+	}
+
+	@Override
+	public Order getOrderByOrderId(String Id) throws InvalidOrderIdException {
+		// TODO Auto-generated method stub
+		
+		return orders.stream().filter(e->e.getOrderId().equals(Id)).findFirst().orElseThrow(()->new InvalidOrderIdException("Invalid order id."));
+
+	}
+
+	@Override
+	public Optional<ArrayList<Order>> getOrders() {
+		// TODO Auto-generated method stub
+		return Optional.ofNullable(orders);
+	}
+
+	@Override
+	public Optional<ArrayList<Order>> getOrdersByUserId(String userId) {
+		// TODO Auto-generated method stub
+		return Optional.ofNullable((ArrayList<Order>)( orders.stream().filter(e->e.getUserId().equals(userId))));
+	}
+
+	@Override
+	public String removeOrderByOrderId(String id) {
+		// TODO Auto-generated method stub
+		orders = ((ArrayList<Order>)( orders.stream().filter(e->e.getOrderId()!=id)));
+
+		return "Operation executed";
+	}
+
+	@Override
+	public Order updateOrderByOrderId(String id, Order newOrder) {
+		// TODO Auto-generated method stub
+		try {
+		Order orderToUpdate=orders.stream().filter(order->(order!=null && order.getOrderId().equals(id))).findFirst().get();
+		orderToUpdate=newOrder;
+		return newOrder;
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getLocalizedMessage());
+		}
+		/*
+		for(int i=0; i<orders.size(); i++ ){
+			Order order= orders.get(i);
+			if(order!=null && order.getOrderId().equals(id)) {
+				
+				orders.set(i, newOrder);
+				return newOrder;
+			}
+		}*/
+		return null;
+	}
+
+}

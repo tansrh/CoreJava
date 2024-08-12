@@ -1,0 +1,13 @@
+package com.wu.ecommerce.dto;
+
+import lombok.Data;
+
+@Data
+public class Product {
+
+	private String productId;
+	private String productName;
+	private String categoryName;
+	private float price;
+	
+}

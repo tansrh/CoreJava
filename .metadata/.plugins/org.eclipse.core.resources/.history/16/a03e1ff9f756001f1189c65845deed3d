@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+Hello from index.html
+<nav>
+<a href="/">Login</a>
+<a href="/registerPage">Register</a>
+</nav>
+</body>
+</html>

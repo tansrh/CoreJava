@@ -1,0 +1,26 @@
+package com.wu.ecommerce.repo;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Optional;
+
+import com.wu.ecommerce.dto.Order;
+import com.wu.ecommerce.dto.Users;
+import com.wu.ecommerce.exception.InvalidOrderIdException;
+
+public interface UserRepository {
+
+	
+	
+	public Users addUser(Users user) throws SQLException;
+	public Users getUserByOrderId(String Id) throws InvalidOrderIdException;
+	public Optional<ArrayList<Users>> getUsers();
+	public Optional<ArrayList<Users>> getUsersByUserId(String userId);
+	public String removeOrderByUserId(String id);
+	public Users updateOrderByUserId(String id, Users user);
+	default void display() {
+		System.out.println("hello");
+	}
+
+	
+}

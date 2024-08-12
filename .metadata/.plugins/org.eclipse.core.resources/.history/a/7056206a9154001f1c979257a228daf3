@@ -1,0 +1,207 @@
+package com.wu.ecommerce.repo;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+import com.wu.ecommerce.dto.Product;
+import com.wu.ecommerce.exception.InvalidIDException;
+import com.wu.ecommerce.repo.ProductRepository;
+
+public class ProductRepositoryImpl implements ProductRepository {
+	private ProductRepositoryImpl() {
+	// TODO Auto-generated constructor stub
+		
+	}
+	private static  ProductRepository productRepository;
+//	private Product[] products=new Product[10];
+	private ArrayList<Product> products=new ArrayList<Product>();
+	private static int counter=-1;
+	public static ProductRepository getInstance() {
+		if(productRepository==null) {
+			 productRepository=new ProductRepositoryImpl();
+		}
+		return productRepository;
+	}
+	@Override
+	public Product addProduct(Product product) {
+		// TODO Auto-generated method stub
+		/*
+		if((counter+1)==products.length) {
+			Product[] newProducts=new Product[products.length+1+ ((products.length*2)/3)];
+			for (int i = 0; i < products.length; i++) {
+				newProducts[i]=products[i];
+			}
+			
+			products=newProducts;
+			
+			
+		}
+		products[++counter]=product;
+		return product;
+		*/
+		boolean result=products.add(product);
+		if(result) {
+			return null;
+		}
+		return product;
+	}
+
+	@Override
+	public Product getProductByProductId(String Id) throws InvalidIDException {
+		// TODO Auto-generated method stub
+		/*
+		for(Product product: products) {
+			if(product!=null && product.getProductId().equals(Id)) {
+				return Optional.of(product);
+			}
+		}
+		return Optional.empty();
+		*/
+		
+		return products.stream().filter(e->(e!=null && e.getProductId().equals(Id))).findFirst().orElseThrow(()->new InvalidIDException("id not found"));
+		
+	}
+	/*
+	@Override
+	public Optional<Product[]> getProducts() {
+		// TODO Auto-generated method stub
+		return Optional.ofNullable(products);
+	}
+	*/
+	@Override
+	public Optional<ArrayList<Product>> getProducts() {
+		// TODO Auto-generated method stub
+		return Optional.ofNullable(products);
+	}
+	/*
+	@Override
+	public Optional<Product[]> getProductsByCategory(String category) {
+		// TODO Auto-generated method stub
+		
+		List<Product> arr=new ArrayList<>();
+		for(Product product: products) {
+			if(product!=null && product.getCategoryName()!=null && product.getCategoryName().equals(category)) {
+				arr.add(product);
+				
+			}
+		}
+		Product[] newarr=new Product[arr.size()];
+		for (int i = 0; i < newarr.length; i++) {
+			newarr[i]=arr.get(i);
+		}
+		
+		int size=0;
+		for(Product product: products) {
+			if(product!=null && product.getCategoryName()!=null && product.getCategoryName().equals(category)) {
+				size++;
+				
+			}
+		}
+		Product[] newarr=new Product[size];
+		int index=0;
+		for(Product product: products) {
+			if(product!=null && product.getCategoryName()!=null && product.getCategoryName().equals(category)) {
+				newarr[index++]=product;
+				
+			}
+		}
+		
+		
+		return Optional.ofNullable(newarr);
+	}
+	*/
+	
+	@Override
+	public Optional<ArrayList<Product>> getProductsByCategory(String category) {
+		
+		/*
+		ArrayList<Product> results=new ArrayList<>();
+		
+		for(Product product: products) {
+			if(product!=null && product.getCategoryName().equals(category)) {
+				results.add(product);
+			}
+		}
+		
+		return Optional.ofNullable(results);
+		*/
+		return Optional.ofNullable(new ArrayList<Product> ( products.stream().filter(e->(e!=null && e.getCategoryName().equals(category))).collect(Collectors.toList())));
+	
+	}
+	@Override
+	public String removeProductByProductId(String id) throws InvalidIDException {
+		// TODO Auto-generated method stub
+		
+		/*
+		boolean found=false;
+		for(int i=0; i<products.length; i++ ){
+			Product product= products[i];
+			if(!found) {
+			if(product!=null && product.getProductId().equals(id)) {
+				found=true;
+				i--;
+				
+				
+			}
+			}
+			else {
+				if(i+1<products.length) {
+					products[i]=products[i+1];
+				}
+				else {
+					products[i]=null;
+				}
+			}
+			
+		}
+		if(found) {
+			counter--;
+			return "Deleted product with id : " + id;
+		}
+		else {
+			return "No such product found";
+		}
+		*/
+		
+		products.remove(this.getProductByProductId(id));
+	//	products = (new ArrayList<Product>( products.stream().filter(e->e.getProductId()!=id).collect(Collectors.toList())));
+
+		return "Operation executed";
+		
+	}
+
+	@Override
+	public Product updateProductByProductId(String id, Product newProduct) throws InvalidIDException {
+		// TODO Auto-generated method stub
+		
+		/*
+		for(int i=0; i<products.length; i++ ){
+			Product product= products[i];
+			if(product!=null && product.getProductId().equals(id)) {
+				products[i]= (newProduct);
+				return products[i];
+			}
+		}
+		return null;
+		*/
+		products.remove(this.getProductByProductId(id));
+		products.add(newProduct);
+		/*
+		for(int i=0; i<products.size(); i++ ){
+			Product product= products.get(i);
+			if(product!=null && product.getProductId().equals(id)) {
+				products.set(i, newProduct);
+				return newProduct;
+			}
+		}
+		*/
+
+		return null;
+		
+		
+		
+	}
+
+}
+
+

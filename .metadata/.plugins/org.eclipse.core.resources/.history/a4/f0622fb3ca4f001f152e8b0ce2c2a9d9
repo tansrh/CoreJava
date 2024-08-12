@@ -1,0 +1,29 @@
+package trainingday1;
+import java.util.*;
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		String [] tags = { "king", "og"};
+		int i=0;
+		while(i!=-1) {
+			System.out.println("Enter to get your title");
+			
+			i=sc.nextInt();
+			Random rand=new Random();
+			int b=(rand.nextInt(2));
+			System.out.println("You are "+ tags[b]);
+		}
+		int [] a={2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+		
+		System.out.println(a.length-2);
+		
+		
+		
+		
+		
+
+	}
+
+}

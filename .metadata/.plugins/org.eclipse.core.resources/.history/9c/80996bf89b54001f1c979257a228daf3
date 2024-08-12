@@ -1,0 +1,13 @@
+package com.wu.ecommerce;
+@FunctionalInterface
+public interface FunctionalInterfaceDemo {
+
+	public int add(int a, int b);
+	
+	default void test() {
+		System.out.println("test");
+	}
+	default void test1() {
+		System.out.println("test1");
+	}
+}

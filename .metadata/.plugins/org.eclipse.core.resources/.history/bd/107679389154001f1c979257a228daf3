@@ -1,0 +1,64 @@
+package com.wu.ecommerce;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import com.wu.ecommerce.dto.Product;
+import com.wu.ecommerce.exception.InvalidIDException;
+import com.wu.ecommerce.exception.InvalidPriceException;
+import com.wu.ecommerce.repo.ProductRepositoryImpl;
+import com.wu.ecommerce.service.ProductService;
+import com.wu.ecommerce.service.ProductServiceImpl;
+
+public class Day3 {
+
+	public static void main(String[] args) {
+		
+	Scanner sc = new Scanner(System.in);
+	ProductService productService = ProductServiceImpl.getInstance();
+	int choice=0;
+	while(true) {
+		
+		
+		System.out.println("Enter your choice");
+		choice=sc.nextInt();
+		switch(choice) {
+		case 1: 
+			String id, name, category;
+			float price;
+			
+			System.out.println("Enter product id");
+			id=sc.next();
+			System.out.println("Enter product name");
+			name=sc.next();
+			System.out.println("Enter product category");
+			category=sc.next();
+			System.out.println("Enter product price");
+			price=sc.nextFloat();
+			
+			
+			try {
+				productService.addProduct(new Product(id, name, category, price));
+			} catch (InvalidIDException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidPriceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case 2:
+			ArrayList<Product> list=productService.getProducts().get();
+			for(Product i :list) {
+				System.out.println(i);
+			}
+			break;
+		default:
+			break;
+		}
+	}
+	
+	
+	}
+
+}

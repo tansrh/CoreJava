@@ -1,0 +1,21 @@
+package com.wu.ecommerce.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Product {
+
+	private String productId;
+	private String productName;
+	private String categoryName;
+	private float price;
+	
+}
+@Override
+public String toString() {
+	return this.productId + " " + this.productName + " " + this.categoryName + " " + this.price;
+}

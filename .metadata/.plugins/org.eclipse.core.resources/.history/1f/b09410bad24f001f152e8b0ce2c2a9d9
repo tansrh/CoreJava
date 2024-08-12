@@ -1,0 +1,7 @@
+package trainingday1;
+
+public interface example1 {
+
+	
+	public int sum(int a, int b);
+}

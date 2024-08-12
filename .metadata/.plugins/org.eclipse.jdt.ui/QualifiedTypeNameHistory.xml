@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="com.wu.ecommerce.utils.DBUtils"/>
+    <fullyQualifiedTypeName name="java.util.HashSet"/>
+    <fullyQualifiedTypeName name="com.wu.ecommerce.service.OrderServiceImpl"/>
+    <fullyQualifiedTypeName name="com.wu.ecommerce.repo.UserRepository"/>
+    <fullyQualifiedTypeName name="com.wu.ecommerce.repo.UserRepositoryImpl"/>
+    <fullyQualifiedTypeName name="com.wu.ecommerce.service.UserService"/>
+    <fullyQualifiedTypeName name="com.wu.ecommerce.service.UserServiceImpl"/>
+    <fullyQualifiedTypeName name="com.wu.ecommerce.dto.Users"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+</qualifiedTypeNameHistroy>

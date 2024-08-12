@@ -1,0 +1,56 @@
+package com.wu.ecommerce.service;
+
+import java.util.Optional;
+
+import com.wu.ecommerce.dto.Product;
+import com.wu.ecommerce.repo.ProductRepository;
+import com.wu.ecommerce.repo.ProductRepositoryImpl;
+
+public class ProductServiceImpl implements ProductService {
+	
+	private ProductRepository productRepository=ProductRepositoryImpl.getInstance();
+	private static ProductService productService;
+	public static ProductService getInstance() {
+		if(productService==null) {
+			productService=new ProductServiceImpl();
+			
+		}
+		return productService;
+	}
+	@Override
+	public Product addProduct(Product product) {
+		// TODO Auto-generated method stub
+		return productRepository.addProduct(product);
+	}
+
+	@Override
+	public Optional<Product> getProductByProductId(String Id) {
+		// TODO Auto-generated method stub
+		return productRepository.getProductByProductId(Id);
+	}
+
+	@Override
+	public Optional<Product[]> getProducts() {
+		// TODO Auto-generated method stub
+		return productRepository.getProducts();
+	}
+
+	@Override
+	public Optional<Product[]> getProductsByCategory(String category) {
+		// TODO Auto-generated method stub
+		return productRepository.getProductsByCategory(category);
+	}
+
+	@Override
+	public String removeProductByProductId(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Product updateProductByProductId(String id, Product product) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

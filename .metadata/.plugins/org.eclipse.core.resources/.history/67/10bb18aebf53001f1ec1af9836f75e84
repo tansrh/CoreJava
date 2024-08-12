@@ -1,0 +1,43 @@
+package com.wu.ecommerce.dto;
+
+import com.wu.ecommerce.exception.InvalidIDException;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@ToString
+@EqualsAndHashCode
+
+@NoArgsConstructor
+public class Product {
+	
+	private String productId;
+	private String productName;
+	private String categoryName;
+	private float price;
+	
+	@Override
+	public String toString() {
+		return this.productId + " " + this.productName + " " + this.categoryName + " " + this.price;
+	}
+	public void setProductId(String productId) throws InvalidIDException {
+		if(productId==null || productId.equals("") || productId.length()<3) {
+			throw new InvalidIDException("Invalid ID");
+		}
+		this.productId = productId;
+	}
+	public Product(String productId, String productName, String categoryName, float price) throws InvalidIDException {
+		super();
+		this.setProductId(productId);
+		this.productName = productName;
+		this.categoryName = categoryName;
+		this.price = price;
+	}
+}
+

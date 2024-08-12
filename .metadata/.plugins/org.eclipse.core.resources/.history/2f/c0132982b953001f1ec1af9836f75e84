@@ -1,0 +1,5 @@
+package com.wu.ecommerce.exception;
+
+public class IdNotFoundException extends Exception {
+
+}
